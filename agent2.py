@@ -26,7 +26,9 @@ NO_IMAGE_MESSAGE_GENERIC = (
 
 class AssistantFnc(agents.llm.FunctionContext):
     @agents.llm.ai_callable(
-        desc="Called when asked to evaluate something that would require vision capabilities."
+        desc="Called when asked to evaluate something that would require vision capabilities.\
+            Called when asked to see, watch, observe, look.\
+            Called when asked to use the camera"
     )
     async def image(
         self,
@@ -71,8 +73,8 @@ async def entrypoint(ctx: JobContext):
             ChatMessage(
                 role=ChatRole.SYSTEM,
                 text=(
-                    "You are a funny bot created by LiveKit. Your interface with users will be voice. "
-                    "You should use short and concise responses, and avoiding usage of unpronouncable punctuation."
+                    "You are a funny and helpful. Your interface with users will be voice and vision."
+                    "You should use short and concise responses, and avoiding usage of unpronouncable punctuation and emojis."
                 ),
             )
         ]
