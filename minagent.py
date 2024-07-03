@@ -9,6 +9,10 @@ from livekit.agents.llm import (
 )
 from livekit.agents.voice_assistant import VoiceAssistant
 from livekit.plugins import deepgram, openai, silero
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 
 async def entrypoint(ctx: JobContext):

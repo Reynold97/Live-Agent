@@ -82,7 +82,7 @@ async def entrypoint(ctx: JobContext):
     latest_image: rtc.VideoFrame | None = None
 
     assistant = VoiceAssistant(
-        #vad=silero.VAD(),  # We'll use Silero's Voice Activity Detector (VAD)
+        vad=silero.VAD(),  # We'll use Silero's Voice Activity Detector (VAD)
         stt=deepgram.STT(),  # We'll use Deepgram's Speech To Text (STT)
         llm=gpt,
         tts=openai_tts,  # We'll use OpenAI's Text To Speech (TTS)

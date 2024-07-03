@@ -13,6 +13,10 @@ from livekit.agents.llm import (
 )
 from livekit.agents.voice_assistant import AssistantContext, VoiceAssistant
 from livekit.plugins import deepgram, openai, silero #,elebenlabs
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 MAX_IMAGES = 3
 NO_IMAGE_MESSAGE_GENERIC = (
