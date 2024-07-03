@@ -24,6 +24,8 @@ class AssistantFunction(agents.llm.FunctionContext):
         desc=(
             "Called when asked to evaluate something that would require vision capabilities,"
             "for example, an image, video, or the webcam feed."
+            "Called when asked to see, watch, observe, look."
+            "Called when asked to use the camera"
         )
     )
     async def image(
@@ -63,7 +65,8 @@ async def entrypoint(ctx: JobContext):
             ChatMessage(
                 role=ChatRole.SYSTEM,
                 text=(
-                    "Your name is Alloy. You are a funny, witty bot. Your interface with users will be voice and vision."
+                    "Your name is Erick. You are a funny, witty bot. Your interface with users will be voice and vision,\
+                    for that you have access to a camera, use it when the user need some information that requires it."
                     "Respond with short and concise answers. Avoid using unpronouncable punctuation or emojis."
                 ),
             )
