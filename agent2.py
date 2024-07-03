@@ -73,7 +73,7 @@ async def entrypoint(ctx: JobContext):
             ChatMessage(
                 role=ChatRole.SYSTEM,
                 text=(
-                    "You are a funny and helpful. Your interface with users will be voice and vision."
+                    "You are a funny and helpful assistant. Your interface with users will be voice and vision."
                     "You should use short and concise responses, and avoiding usage of unpronouncable punctuation and emojis."
                 ),
             )
