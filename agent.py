@@ -11,6 +11,10 @@ from livekit.agents.llm import (
 )
 from livekit.agents.voice_assistant import AssistantContext, VoiceAssistant
 from livekit.plugins import deepgram, openai, silero
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 
 class AssistantFunction(agents.llm.FunctionContext):
