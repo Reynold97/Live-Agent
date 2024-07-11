@@ -12,7 +12,7 @@ from livekit.agents.llm import (
     ChatRole,
 )
 from livekit.agents.voice_assistant import AssistantContext, VoiceAssistant
-from livekit.plugins import deepgram, openai, silero, elebenlabs
+from livekit.plugins import deepgram, openai, silero#, elebenlabs
 from dotenv import load_dotenv
 import os
 
