@@ -20,21 +20,21 @@ load_dotenv()
 
 MAX_IMAGES = 3
 NO_IMAGE_MESSAGE_GENERIC = (
-    "I'm sorry, I don't have an image to process. Are you publishing your video?"
+    "Je suis désolé, je n'ai pas d'image à traiter. Vous publiez votre vidéo ?"
 )
 
 
 class AssistantFnc(agents.llm.FunctionContext):
     @agents.llm.ai_callable(
-        desc="Called when asked to evaluate something that would require vision capabilities.\
-            Called when asked to see, watch, observe, look.\
-            Called when asked to use the camera"
+        desc="Appelé lorsqu'on lui a demandé d'évaluer quelque chose qui nécessiterait des capacités visuelles.\
+            Appelé lorsqu'on lui demande de voir, regarder, observer, regarder.\
+            Appelé lorsqu'on lui a demandé d'utiliser l'appareil photo"
     )
     async def image(
         self,
         user_msg: Annotated[
             str,
-            agents.llm.TypeInfo(desc="The user message that triggered this function"),
+            agents.llm.TypeInfo(desc="Le message utilisateur qui a déclenché cette fonction"),
         ],
     ):
         ctx = AssistantContext.get_current()
@@ -73,8 +73,9 @@ async def entrypoint(ctx: JobContext):
             ChatMessage(
                 role=ChatRole.SYSTEM,
                 text=(
-                    "You are a funny and helpful assistant. Your interface with users will be voice and vision."
-                    "You should use short and concise responses, and avoiding usage of unpronouncable punctuation and emojis."
+                    "Vous êtes un assistant drôle et serviable. Votre interface avec les utilisateurs sera la voix et la vision."
+                    "Vous devez utiliser des réponses courtes et concises et éviter d’utiliser des signes de ponctuation et des émojis imprononçables."
+                    "Parlez toujours en français."
                 ),
             )
         ]
@@ -91,7 +92,7 @@ async def entrypoint(ctx: JobContext):
     img_msg_queue: deque[agents.llm.ChatMessage] = deque()
     assistant = VoiceAssistant(
         vad=silero.VAD(),
-        stt=deepgram.STT(),
+        stt=deepgram.STT(model= "nova-2-general", language= "fr"),
         llm=gpt,
         #tts=elevenlabs.TTS(encoding="pcm_44100"),
         tts=openai_tts,
