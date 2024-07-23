@@ -15,6 +15,8 @@ from livekit.agents.voice_assistant import AssistantContext, VoiceAssistant
 from livekit.plugins import deepgram, openai, silero#, elebenlabs
 from dotenv import load_dotenv
 import os
+import logging
+from logging_config import setup_logging
 
 load_dotenv()
 
@@ -159,4 +161,6 @@ async def request_fnc(req: JobRequest) -> None:
 
 
 if __name__ == "__main__":
+    setup_logging()
+    logging.info("Agent2 started")
     cli.run_app(WorkerOptions(request_fnc))
