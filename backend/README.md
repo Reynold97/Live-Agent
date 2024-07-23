@@ -10,9 +10,18 @@ python3 -m venv /path/to/new/virtual/environment
 source /path/to/new/virtual/environment/bin/activate
 pip install -r requirements.txt
 ```
- 
- ```bash
+
+```bash
 sudo mkdir -p /root/Live-Agent/backend/logs
+sudo chown root:root /root/Live-Agent/backend/logs
+sudo chmod 755 /root/Live-Agent/backend/logs
+sudo touch /root/Live-Agent/backend/logs/agent2.log
+sudo chown root:root /root/Live-Agent/backend/logs/agent2.log
+sudo chmod 644 /root/Live-Agent/backend/logs/agent2.log
+ ```
+ 
+```bash
+sudo nano /etc/systemd/system/agent2.service
 ```
 
 ```bash
@@ -34,15 +43,6 @@ WantedBy=multi-user.target
  ```
 
 ```bash
-sudo chown root:root /root/Live-Agent/backend/logs
-sudo chmod 755 /root/Live-Agent/backend/logs
-sudo touch /root/Live-Agent/backend/logs/agent2.log
-sudo chown root:root /root/Live-Agent/backend/logs/agent2.log
-sudo chmod 644 /root/Live-Agent/backend/logs/agent2.log
- ```
-
-```bash
-sudo nano /etc/systemd/system/agent2.service
 sudo systemctl daemon-reload
 sudo systemctl start agent2.service
 sudo systemctl enable agent2.service
