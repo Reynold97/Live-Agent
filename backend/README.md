@@ -2,11 +2,20 @@
 
 Install ffmpeg 
 ```bash
-apt-get update
-apt-get install ffmpeg
+sudo apt-get update
+sudo apt-get install ffmpeg
+sudo apt-get install python3 python3-pip python3-dev
+sudo apt-get install python3-venv
+python3 -m venv /path/to/new/virtual/environment
+source /path/to/new/virtual/environment/bin/activate
+pip install -r requirements.txt
 ```
  
  ```bash
+sudo mkdir -p /root/Live-Agent/backend/logs
+```
+
+```bash
 [Unit]
 Description=Agent2 Python Script
 After=network.target
@@ -24,8 +33,7 @@ StandardError=append:/root/Live-Agent/backend/logs/agent2.log
 WantedBy=multi-user.target
  ```
 
- ```bash
-sudo mkdir -p /root/Live-Agent/backend/logs
+```bash
 sudo chown root:root /root/Live-Agent/backend/logs
 sudo chmod 755 /root/Live-Agent/backend/logs
 sudo touch /root/Live-Agent/backend/logs/agent2.log
