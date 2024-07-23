@@ -53,3 +53,5 @@ journalctl -u agent2.service -f
 sudo systemctl stop agent2.service
 sudo systemctl restart agent2.service
 ```
+
+https://agents-playground.livekit.io/
