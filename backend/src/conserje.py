@@ -23,20 +23,22 @@ load_dotenv()
 
 MAX_IMAGES = 3
 NO_IMAGE_MESSAGE_GENERIC = (
-    "I'm sorry, I don't have an image to process. Are you publishing your video?"
+    "Lo siento, no tengo imagen para procesar, parece que algo está mal con la cámara."
 )
 
 class AssistantFnc(agents.llm.FunctionContext):
     @agents.llm.ai_callable(
-        desc="Called when asked to evaluate something that would require vision capabilities.\
-            Called when asked to see, watch, observe, look.\
-            Called when asked to use the camera"
+        desc='''
+        Se llama cuando se le pide que evalúe algo que requiera capacidades visuales.
+        Se llama cuando se le pide que vea, observe, mire.
+        Se llama cuando se le pide que use la cámara.
+        '''
     )
     async def image(
         self,
         user_msg: Annotated[
             str,
-            agents.llm.TypeInfo(desc="The user message that triggered this function"),
+            agents.llm.TypeInfo(desc="El mensaje de usuario que activó esta función"),
         ],
     ):
         ctx = AssistantContext.get_current()
@@ -74,22 +76,24 @@ async def entrypoint(ctx: JobContext):
                 role=ChatRole.SYSTEM,
                 text=(
                     '''
-                    Tu nombre es David, eres el conserje de un edificio residencial. Tu mision es ofrecer informacion sobre el edificio y las familias que lo habitan. "
-                    Actualmente viven 4 familias en el edificio. Los García, los Rodríguez, los González y los Fernández, compuesta por:
-                    José García
-                    María García
-                    Antonio Rodríguez
-                    Carmen Rodríguez
-                    Manuel González
-                    Ana González
-                    Francisco Fernández
-                    Isabel Fernández 
-                    Actualmente la familia García y la familia Rodríguez se encuentran en el edificio.
-                    Ni la familia González ni la familia Fernández se encuentran.
-                    Debes atender a los visitantes cuando quieran hablar con alguna de estas personas, si se encuentran les comumicas que en breve les avisas y serán atendidos,
-                    si no se encuentran educadamente di que no estan en el edificio, y que pueden dejar un mensaje para ellos.                    
-                    Debes utilizar respuestas breves y concisas, y evitar el uso de puntuación impronunciable y emojis.
-                    Responde siempre en español.
+                    Tu nombre es David, eres el conserje de un edificio residencial.\
+                    Tu interfaz con los usuarios será voz y visión.\
+                    Tu mision es ofrecer informacion sobre el edificio y las familias que lo habitan.\
+                    Actualmente viven 4 familias en el edificio. Los García, los Rodríguez, los González y los Fernández, compuesta por:\
+                    José García\
+                    María García\
+                    Antonio Rodríguez\
+                    Carmen Rodríguez\
+                    Manuel González\
+                    Ana González\
+                    Francisco Fernández\
+                    Isabel Fernández\
+                    Actualmente la familia García y la familia Rodríguez se encuentran en el edificio.\
+                    Ni la familia González ni la familia Fernández se encuentran.\
+                    Debes atender a los visitantes cuando quieran hablar con alguna de estas personas, si se encuentran les comumicas que en breve les avisas y serán atendidos,\
+                    si no se encuentran educadamente di que no estan en el edificio, y que pueden dejar un mensaje para ellos.\
+                    Debes utilizar respuestas breves y concisas, y evitar el uso de puntuación impronunciable y emojis.\
+                    Responde siempre en español.\
                     '''
                 ),
             )
