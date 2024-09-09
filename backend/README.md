@@ -43,6 +43,24 @@ WantedBy=multi-user.target
  ```
 
 ```bash
+[Unit]
+Description=Agent2 Python Script
+After=network.target
+
+[Service]
+ExecStart=/root/Live-Agent/backend/venv/bin/python /root/Live-Agent/backend/src/conserje.py start
+WorkingDirectory=/root/Live-Agent/backend
+Restart=always
+User=root
+Environment=PYTHONUNBUFFERED=1
+StandardOutput=append:/root/Live-Agent/backend/logs/agent2.log
+StandardError=append:/root/Live-Agent/backend/logs/agent2.log
+
+[Install]
+WantedBy=multi-user.target
+ ```
+
+```bash
 sudo systemctl daemon-reload
 sudo systemctl start agent2.service
 sudo systemctl enable agent2.service
