@@ -2,13 +2,19 @@
 
 Install ffmpeg 
 ```bash
+sudo -i
 sudo apt-get update
 sudo apt-get install ffmpeg
 sudo apt-get install python3 python3-pip python3-dev
 sudo apt-get install python3-venv
-python3 -m venv /path/to/new/virtual/environment
-source /path/to/new/virtual/environment/bin/activate
-pip install -r requirements.txt
+git clone https://github.com/Reynold97/Live-Agent.git
+python3 -m venv /root/Live-Agent/backend/venv
+source /root/Live-Agent/backend/venv/bin/activate
+pip install -r /root/Live-Agent/backend/requirements.txt
+```
+
+```bash
+sudo nano /root/Live-Agent/backend/.env
 ```
 
 ```bash
