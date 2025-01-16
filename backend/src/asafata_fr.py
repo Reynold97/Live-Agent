@@ -119,7 +119,7 @@ async def entrypoint(ctx: JobContext):
         model="gpt-4o",
     )
     openai_tts = tts.StreamAdapter(
-        tts=openai.TTS(voice="alloy"),
+        tts=openai.TTS(voice="nova"),
         sentence_tokenizer=tokenize.basic.SentenceTokenizer(),
     )
     latest_image: rtc.VideoFrame | None = None
