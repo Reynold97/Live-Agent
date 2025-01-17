@@ -226,7 +226,7 @@ async def entrypoint(ctx: JobContext):
     assistant.start(ctx.room)
 
     await asyncio.sleep(0.5)
-    await assistant.say("Bonjour et bienvenue. Je suis Clara, votre hôte virtuelle. Comment puis-je vous aider aujourd'hui ?", allow_interruptions=True)
+    await assistant.say("Bonjour et bienvenue. Je suis Clara, votre hôtesse virtuelle. Comment puis-je vous aider aujourd'hui ?", allow_interruptions=True)
     while ctx.room.connection_state == rtc.ConnectionState.CONN_CONNECTED:
         video_track = await get_human_video_track(ctx.room)
         async for event in rtc.VideoStream(video_track):
