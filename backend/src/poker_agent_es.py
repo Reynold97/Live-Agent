@@ -139,7 +139,7 @@ async def entrypoint(ctx: JobContext):
     img_msg_queue: deque[agents.llm.ChatMessage] = deque()
     assistant = VoiceAssistant(
         vad=silero.VAD(),
-        stt=deepgram.STT(model= "nova-2-general"),
+        stt=deepgram.STT(model= "nova-2-general", language= "es"),
         llm=gpt,
         #tts=elevenlabs.TTS(encoding="pcm_44100"),
         tts=openai_tts,
