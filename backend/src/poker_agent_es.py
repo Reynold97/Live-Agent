@@ -194,7 +194,7 @@ async def entrypoint(ctx: JobContext):
     assistant.start(ctx.room)
 
     await asyncio.sleep(0.5)
-    await assistant.say("Ah, pulled up a chair at the therapy table, have we? What's the damage?", allow_interruptions=True)
+    await assistant.say("Ah, ¿te has sentado en la mesa de terapia? ¿Cuál es el daño?", allow_interruptions=True)
     while ctx.room.connection_state == rtc.ConnectionState.CONN_CONNECTED:
         video_track = await get_human_video_track(ctx.room)
         async for event in rtc.VideoStream(video_track):
